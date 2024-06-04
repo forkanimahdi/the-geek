@@ -12,7 +12,7 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        //
+        return view("leaderboard");
     }
 
     /**
@@ -26,9 +26,13 @@ class ScoreController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, string $score)
     {
-        //
+        $score = Score::create([
+            "user_id" => $request->user()->id,
+            "score" => $score
+        ]);
+        return back();
     }
 
     /**
