@@ -47,6 +47,6 @@ class User extends Authenticatable
 
     public function score()
     {
-        return $this->hasOne(Score::class)->first()->score;
+        return $this->hasOne(Score::class);
     }
 }

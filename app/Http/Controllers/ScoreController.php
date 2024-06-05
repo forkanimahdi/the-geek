@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Score;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ScoreController extends Controller
 {
@@ -26,13 +27,18 @@ class ScoreController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, string $score)
+    public function store(Request $request)
     {
         $score = Score::create([
             "user_id" => $request->user()->id,
-            "score" => $score
+            "score" => $request->score,
         ]);
-        return back();
+
+        if ($request->score >= 50) {
+            return Redirect::away("https://youtu.be/dQw4w9WgXcQ?si=5MKKhCNe7rWoDMa7");
+        }
+        
+        return Redirect::away("https://youtu.be/umDr0mPuyQc?si=1LLE-z-PLF6vdn2v");
     }
 
     /**

@@ -1,85 +1,31 @@
 <x-app-layout>
-<div class="w-full h-[200vh] mainbackground bg-yellow-500">
-    <div class="w-full flex justify-center py-6"><img src={{"images/logolions.png"}} alt="" class="h-[12vh] bg-white rounded-full"></div>
-    <div class="mainn w-full flex flex-col justify-center items-center">
-        {{-- leaderboard Div --}}
-        <div class="containerr  w-[80vw] rounded-xl px-4 py-4">
-        {{-- layer 1 --}}
-        <div class="flex w-[55vw] justify-between ">
-            <p class="text-2xl font-serif py-1 px-1 ">Rank</p>
-            <p class="text-2xl font-serif py-1 px-1">User</p>
-            <p class="text-2xl font-serif py-1 px-1">Points</p>
+    <div class="overflow-hidden bg-gradient-to-bl w-full h-screen flex justify-center items-center text-white">
+        <img class="w-[3%] absolute left-50 top-6" src={{ asset('images/logo1.png') }} alt="">
+        <div class="relative shadow-lg bg-gradient-to-t from-[#80b918] to-[#007f5f] z-10 rounded w-[70%] py-8">
+            <img class="absolute -z-10 top-0 right-50 opacity-10 w-[100%]" src={{ asset('images/3215422.png') }}
+                alt="">
 
-        </div>
-            <div class="relative layercardd mb-2 rounded-t-xl h-[10vh] flex items-center px-4">
-                <span class="relative z-10 text-2xl">1</span>
-                <div class="relative z-10 pic_name w-[35vw] flex px-4 justify-end items-center">
-                    <span class="bg-gray-200 w-10 h-10 rounded-full"> <img src={{"images/logolions.png"}} alt=""> </span>
-                    <span class="text-xl px-4">AmineBakrim</span>
-                </div>
-                <span class="relative z-10 text-2xl w-[30vw] text-center font-serif">1211</span>
-            </div>
-        {{-- layer 2 --}}
-            <div class="relative layercardd mb-2 rounded-t-xl h-[10vh] flex items-center px-4">
-                <span class="relative z-10 text-2xl">2</span>
-                <div class="relative z-10 pic_name w-[35vw] flex px-4 justify-end items-center">
-                    <span class="bg-gray-200 w-10 h-10 rounded-full"> <img src={{"images/logolions.png"}} alt=""> </span>
-                    <span class="text-xl px-4">AmineBakrim</span>
-                </div>
-                <span class="relative z-10 text-2xl w-[30vw] text-center font-serif">1211</span>
-            </div>
-        {{-- layer3 --}}
-            <div class="relative layercardd mb-2 rounded-t-xl h-[10vh] flex items-center px-4">
-                <span class="relative z-10 text-2xl">3</span>
-                <div class="relative z-10 pic_name w-[35vw] flex px-4 justify-end items-center">
-                    <span class="bg-gray-200 w-10 h-10 rounded-full"> <img src={{"images/logolions.png"}} alt=""> </span>
-                    <span class="text-xl px-4">AmineBakrim</span>
-                </div>
-                <span class="relative z-10 text-2xl w-[30vw] text-center font-serif">1211</span>
-            </div>
-        {{-- layer4 --}}
-            <div class="relative layercardd mb-2 rounded-t-xl h-[10vh] flex items-center px-4">
-                <span class="relative z-10 text-2xl">4</span>
-                <div class="relative z-10 pic_name w-[35vw] flex px-4 justify-end items-center">
-                    <span class="bg-gray-200 w-10 h-10 rounded-full"> <img src={{"images/logolions.png"}} alt=""> </span>
-                    <span class="text-xl px-4">AmineBakrim</span>
-                </div>
-                <span class="relative z-10 text-2xl w-[30vw] text-center font-serif">1211</span>
-            </div>
-        {{-- layer5 --}}
-            <div class="relative layercardd mb-2 rounded-t-xl h-[10vh] flex items-center px-4">
-                <span class="relative z-10 text-2xl">5</span>
-                <div class="relative z-10 pic_name w-[35vw] flex px-4 justify-end items-center">
-                    <span class="bg-gray-200 w-10 h-10 rounded-full"> <img src={{"images/logolions.png"}} alt=""> </span>
-                    <span class="text-xl px-4">AmineBakrim</span>
-                </div>
-                <span class="relative z-10 text-2xl w-[30vw] text-center font-serif">1211</span>
-            </div>
-        {{-- layer6 --}}
-            <div class="relative layercardd mb-2 rounded-t-xl h-[10vh] flex items-center px-4">
-                <span class="relative z-10 text-2xl">6</span>
-                <div class="relative z-10 pic_name w-[35vw] flex px-4 justify-end items-center">
-                    <span class="bg-gray-200 w-10 h-10 rounded-full"> <img src={{"images/logolions.png"}} alt=""> </span>
-                    <span class="text-xl px-4">AmineBakrim</span>
-                </div>
-                <span class="relative z-10 text-2xl w-[30vw] text-center font-serif">1211</span>
-            </div>
+            <table class="w-full text-center mt-4">
+                <thead class="w-full text-lg">
+                    <tr class="w-full flex py-2">
+                        {{-- <th class="flex-1">Rank</th> --}}
+                        <th class="flex-1">User</th>
+                        <th class="flex-1">Score</th>
+                    </tr>
+                </thead>
+
+                <tbody class="w-fulltext-lg">
+                    @foreach ($users as $index => $user)
+                        @if ($user->score)
+                            <tr class="w-full py-3 flex justify-around border-t border-gray-200">
+                                {{-- <td class="flex-1">{{ $index + 1  }}</td> --}}
+                                <td class="flex-1">{{ $user->name }}</td>
+                                <td class="flex-1">{{ $user->score->score }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-</div>    
-
-<style>
-    .layercardd::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(254, 254, 254, 0.829); /* Gray-50 background with 50% opacity */
-        z-index: 0; /* Make sure the pseudo-element is below the text */
-        border-radius: 0.75rem; /* Matching the rounded corners */
-    }
-
-</style>
 </x-app-layout>
