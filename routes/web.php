@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LeaderBoardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ScoreController;
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/question', [QuestionController::class, 'index']);
 Route::get('/intro', [QuestionController::class, 'show']);
 Route::get('/result', [QuestionController::class, 'result']);
+Route::get('/leaderboard', [LeaderBoardController::class , 'index']);
 
 
 require __DIR__ . '/auth.php';
